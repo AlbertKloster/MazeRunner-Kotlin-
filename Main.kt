@@ -1,21 +1,11 @@
 package mazerunner
 
 fun main() {
-    val mazeService = MazeService(10, 10)
+    println("Please, enter the size of a maze")
+    val (height, width) = readln().split(" ").map { it.toInt() }
 
-    val maze = listOf(
-        listOf(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-        listOf(0, 0, 1, 0, 1, 0, 1, 0, 0, 1),
-        listOf(1, 0, 1, 0, 0, 0, 1, 0, 1, 1),
-        listOf(1, 0, 0, 0, 1, 1, 1, 0, 0, 0),
-        listOf(1, 0, 1, 0, 0, 0, 0, 0, 1, 1),
-        listOf(1, 0, 1, 0, 1, 1, 1, 0, 1, 1),
-        listOf(1, 0, 1, 0, 1, 0, 0, 0, 1, 1),
-        listOf(1, 0, 1, 0, 1, 1, 1, 0, 1, 1),
-        listOf(1, 0, 1, 0, 0, 0, 1, 0, 0, 1),
-        listOf(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-    )
+    val mazeService = MazeService(width, height)
 
-    mazeService.setMaze(maze)
     mazeService.printMaze()
+
 }

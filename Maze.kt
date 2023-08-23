@@ -5,7 +5,7 @@ object Maze {
     private var maze: Array<IntArray> = Array(10) { IntArray(10) }
 
     fun setMaze(width: Int, height: Int) {
-        maze = Array(height) { IntArray(width) }
+        maze = Array(height) { IntArray(width) { 1 } }
     }
 
     fun setByIndex(index: Index, value: Int) {

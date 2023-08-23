@@ -1,35 +1,56 @@
-# Stage 1/4: Display a maze
+# Stage 2/4: Maze generator
 ## Description
-Implement the maze as a two-dimensional array of integers. If the value of an element is 1, it is a wall. If the value is 0, it is a passage.
+In this stage, you will develop an algorithm for creating a maze.
 
-Your maze must be 10x10. Other rules are as follows:
+Don't forget the rules of the correct maze:
+
 1. There should be walls around the maze, except for two cells: entrance and exit.
-2. Any empty cell should be accessible from the entrance or exit of the maze. It is impossible to move diagonally, only vertically or horizontally.
-3. There has to be a path from the entrance to the exit. It doesn't matter what is considered an entrance and what is an exit as they are interchangeable.
-4. It is not allowed to create blocks in the maze consisting only of walls, such as 3x3 ones.
+2. Any empty cell must be accessible from the entrance or exit of the maze. It is not possible to walk along the maze diagonally, only vertically and horizontally.
+3. There's got to be a path from the entrance to the exit. It doesn't matter what is considered an entrance and what is an exit as they are interchangeable.
+4. The maze should not contain 3x3 blocks consisting of walls only. Try to fill the entire maze area with pathways.
 
-To print the array, follow these two rules:
-- to display a pass, use two space characters;
-- to display a wall, use two block characters in a row (the same): █ (Unicode character with code U+2588).
+There is a very good algorithm for building a maze, based on the construction of a minimal spanning tree. You can <a href="https://www.youtube.com/watch?v=cQVH4gcb3O4">watch the video</a> on how this algorithm works.
 
-You can print a wall like this: `print("\u2588\u2588")` and a pass like this: `print(" ")`.
+It should be possible to specify the size of the maze. After a user enters the size, the program must print a maze and then stop.
 
-Remember that the maze is only visible if you have a monospaced font! Otherwise, the space symbol will be quite small in width.
+Break your program down into a set of methods to make it easy to understand and add to or edit later.
 
 ## Objectives
-Print a 10x10 maze. At this stage, it does not matter what maze you display. The program may always output the same prepared maze or one of a set of prepared mazes.
+After starting, your program should ask a user to enter the size of the maze, then output a generated maze, and then stop. The user should input 2 numbers. The first number is height and the second number is width.
 
-## Example
-After starting, your program should output a maze and then stop.
+## Examples
+The greater-than symbol followed by a space (`> `) represents the user input. Note that it's not part of the input.
+
+<b>Example 1:</b>
 ```
-████████████████████
-    ██  ██  ██    ██
-██  ██      ██  ████
-██      ██████
-██  ██          ████
-██  ██  ██████  ████
-██  ██  ██      ████
-██  ██  ██████  ████
-██  ██      ██    ██
-████████████████████
+Please, enter the size of a maze
+>7 9
+██████████████████
+████      ██  ████
+████████  ██  ████
+██      ████
+████  ██  ██
+████      ██  ████
+██████████████████
+```
+
+<b>Example 2:</b>
+```
+Please, enter the size of a maze
+>15 35
+██████████████████████████████████████████████████████████████████████
+██  ██                  ██                  ██              ██
+██████  ██  ██████████████████  ██████████████████  ██████████  ██████
+██      ██  ██                              ██      ██  ██  ██
+██████  ██  ██████████  ██  ██  ██████████  ██  ██  ██  ██  ██  ██████
+██  ██  ██      ██      ██  ██  ██  ██          ██          ██      ██
+██  ██  ██  ██  ██████████████████  ██████  ██████████████  ██████  ██
+██          ██  ██      ██  ██              ██                  ██  ██
+██████  ██  ██████████  ██  ██████████  ██████████████████████  ██  ██
+██  ██  ██  ██              ██      ██  ██              ██      ██  ██
+██  ██  ██  ██████████  ██████████  ██████████████  ██  ██  ██████  ██
+██      ██      ██  ██  ██          ██          ██  ██              ██
+██  ██████  ██████  ██  ██  ██  ██  ██████████  ██  ██████  ██  ██  ██
+██  ██                      ██  ██                  ██      ██  ██  ██
+██████████████████████████████████████████████████████████████████████
 ```
