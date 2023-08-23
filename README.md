@@ -1,56 +1,78 @@
-# Stage 2/4: Maze generator
+# Stage 3/4: Saved and loaded
 ## Description
-In this stage, you will develop an algorithm for creating a maze.
+The program should provide a menu with five options:
 
-Don't forget the rules of the correct maze:
+1. Generate a new maze.
+2. Load a maze.
+3. Save the maze.
+4. Display the maze.
+5. Exit.
 
-1. There should be walls around the maze, except for two cells: entrance and exit.
-2. Any empty cell must be accessible from the entrance or exit of the maze. It is not possible to walk along the maze diagonally, only vertically and horizontally.
-3. There's got to be a path from the entrance to the exit. It doesn't matter what is considered an entrance and what is an exit as they are interchangeable.
-4. The maze should not contain 3x3 blocks consisting of walls only. Try to fill the entire maze area with pathways.
+After a maze is generated or loaded from a file, it becomes the current maze that can be saved or displayed.
 
-There is a very good algorithm for building a maze, based on the construction of a minimal spanning tree. You can <a href="https://www.youtube.com/watch?v=cQVH4gcb3O4">watch the video</a> on how this algorithm works.
+If there is no current maze (generated or loaded), a user should not see the options <b>save</b> and <b>display the maze</b>. If a user chooses an option that requires a file, he must enter a path to the file. You must always check the result of processing files and display user-friendly messages.
 
-It should be possible to specify the size of the maze. After a user enters the size, the program must print a maze and then stop.
+The program should output the maze to the user only in two scenarios:
 
-Break your program down into a set of methods to make it easy to understand and add to or edit later.
+- After <b>generating</b> a maze;
+- After choosing an option <b>display the maze</b>.
+
+Your program must successfully handle the following cases:
+
+- if an incorrect option was chosen, the program must print a message like `Incorrect option. Please try again`;
+- if a file to load a maze does not exist, the program should not stop, it must print a message like `The file ... does not exist`;
+- if a file has an invalid format for a maze, the program should not stop, but it must print a message like `Cannot load the maze. It has an invalid format`.
+
+By the way, you can store the maze in any format, the tests do not check the contents of the file. The most important thing is that the saved maze must be correctly loaded into the program.
 
 ## Objectives
-After starting, your program should ask a user to enter the size of the maze, then output a generated maze, and then stop. The user should input 2 numbers. The first number is height and the second number is width.
+After starting, your program must print a menu listing only appropriate options. When a user has chosen an option, the program must perform the corresponding action. Notice that the maze should be a <b>square</b>, so the user should input a single integer in order to specify the maze size.
 
-## Examples
-The greater-than symbol followed by a space (`> `) represents the user input. Note that it's not part of the input.
+<b>Note</b>, the program should not stop until the user selects the exit option.
 
-<b>Example 1:</b>
+## Example
+The greater-than symbol followed by a space (`> `) represents the user input. Notice that it's not part of the input.
 ```
-Please, enter the size of a maze
->7 9
-██████████████████
-████      ██  ████
-████████  ██  ████
-██      ████
-████  ██  ██
-████      ██  ████
-██████████████████
-```
+=== Menu ===
+1. Generate a new maze
+2. Load a maze
+0. Exit
+>1
+Enter the size of a new maze
+>17
+██████  ██████████████████████████
+██████  ██████████████████████████
+██  ██                          ██
+██  ██████████████  ██████████████
+██  ██              ██  ██  ██  ██
+██  ██████████████  ██  ██  ██  ██
+██      ██                      ██
+██████  ██████████  ██  ██████████
+██      ██          ██  ██      ██
+██████  ██████████  ██████  ██████
+██              ██              ██
+██  ██  ██  ██  ██  ██████████████
+██  ██  ██  ██              ██  ██
+██  ██████████  ██  ██  ██████  ██
+██  ██          ██  ██          ██
+████████  ████████████████████████
+████████  ████████████████████████
 
-<b>Example 2:</b>
-```
-Please, enter the size of a maze
->15 35
-██████████████████████████████████████████████████████████████████████
-██  ██                  ██                  ██              ██
-██████  ██  ██████████████████  ██████████████████  ██████████  ██████
-██      ██  ██                              ██      ██  ██  ██
-██████  ██  ██████████  ██  ██  ██████████  ██  ██  ██  ██  ██  ██████
-██  ██  ██      ██      ██  ██  ██  ██          ██          ██      ██
-██  ██  ██  ██  ██████████████████  ██████  ██████████████  ██████  ██
-██          ██  ██      ██  ██              ██                  ██  ██
-██████  ██  ██████████  ██  ██████████  ██████████████████████  ██  ██
-██  ██  ██  ██              ██      ██  ██              ██      ██  ██
-██  ██  ██  ██████████  ██████████  ██████████████  ██  ██  ██████  ██
-██      ██      ██  ██  ██          ██          ██  ██              ██
-██  ██████  ██████  ██  ██  ██  ██  ██████████  ██  ██████  ██  ██  ██
-██  ██                      ██  ██                  ██      ██  ██  ██
-██████████████████████████████████████████████████████████████████████
+=== Menu ===
+1. Generate a new maze
+2. Load a maze
+3. Save the maze
+4. Display the maze
+0. Exit
+>3
+>maze.txt
+
+=== Menu ===
+1. Generate a new maze
+2. Load a maze
+3. Save the maze
+4. Display the maze
+0. Exit
+>0
+Bye!
 ```

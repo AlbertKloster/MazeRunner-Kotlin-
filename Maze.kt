@@ -2,7 +2,7 @@ package mazerunner
 
 object Maze {
 
-    private var maze: Array<IntArray> = Array(10) { IntArray(10) }
+    private var maze: Array<IntArray> = Array(0) { IntArray(0) }
 
     fun setMaze(width: Int, height: Int) {
         maze = Array(height) { IntArray(width) { 1 } }
