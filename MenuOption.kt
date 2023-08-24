@@ -5,6 +5,7 @@ enum class MenuOption(val number: String) {
     LOAD("2"),
     SAVE("3"),
     DISPLAY("4"),
+    FIND("5"),
     EXIT("0");
 
     companion object {

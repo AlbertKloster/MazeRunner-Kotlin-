@@ -32,11 +32,27 @@ class MazeService {
     }
 
     fun save(filename: String) {
-        File(filename).writeText(getMazeString())
+        File(filename).writeText(getMazeString().replace("//", "  "))
     }
 
     fun display() {
+        println(getMazeString().replace("//", "  "))
+    }
+
+    fun displaySolution() {
         println(getMazeString())
+    }
+
+    fun find() {
+        MazeSolver.solve(findEntry())
+    }
+
+    private fun findEntry(): Index {
+        for (row in 0 until Maze.getHeight()) {
+            if (Maze.getByIndex(Index(row, 0)) == 0)
+                return Index(row, 0)
+        }
+        throw RuntimeException("No entry found")
     }
 
     private fun getMazeString(): String {
@@ -44,7 +60,7 @@ class MazeService {
         for (row in 0 until Maze.getHeight()) {
             for (column in 0 until Maze.getWidth()) {
                 val cell = Maze.getByIndex(Index(row, column))
-                builder.append(if (cell == 1) "██" else "  ")
+                builder.append(if (cell == 1) "██" else if (cell == 2) "//" else "  ")
             }
             builder.append("\n")
         }
@@ -87,8 +103,8 @@ class MazeService {
 
         var column = 0
         while (true) {
-            val index = Index(row, column)
-            Maze.setByIndex(index, 0)
+            val currentIndex = Index(row, column)
+            Maze.setByIndex(currentIndex, 0)
 
             column++
             if (column >= Maze.getWidth())

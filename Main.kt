@@ -10,13 +10,14 @@ val startMenu = """
     """.trimIndent()
 
 val menu = """
-        === Menu ===
-        1. Generate a new maze
-        2. Load a maze
-        3. Save the maze
-        4. Display the maze
-        0. Exit
-    """.trimIndent()
+    === Menu ===
+    1. Generate a new maze
+    2. Load a maze
+    3. Save the maze
+    4. Display the maze
+    5. Find the escape
+    0. Exit
+""".trimIndent()
 
 fun main() {
 
@@ -28,6 +29,7 @@ fun main() {
             MenuOption.LOAD -> load()
             MenuOption.SAVE -> save()
             MenuOption.DISPLAY -> display()
+            MenuOption.FIND -> find()
             MenuOption.EXIT -> exit = true
         }
     }
@@ -58,4 +60,10 @@ private fun display() {
         mazeService.display()
 }
 
+private fun find() {
+    if (mazeService.isGenerated()) {
+        mazeService.find()
+        mazeService.displaySolution()
+    }
+}
 
